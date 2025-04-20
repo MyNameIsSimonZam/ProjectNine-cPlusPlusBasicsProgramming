@@ -34,12 +34,12 @@ void task1() {
 	std::cout << "Please, input the word: ";
 	std::getline(std::cin, word);
 
-	for (int i = 0, j = 0; i < str.length(); ++i) {
-		if (str[i] == word[j]) {
-			++j;
-			if (j == word.length()) {
-				j = 0;
-				result += 1;
+	for (int i = 0; i <= str.length() - word.length(); ++i) {
+		if (str[i] == word[0]) {
+			for (int j = 0; j < word.length(); ++j) {
+				if (str[i + j] != word[j])
+					break;
+				else if (j == word.length() - 1) ++result;
 			}
 		}
 	}
@@ -57,6 +57,33 @@ void task1() {
 */
 
 void task2() {
+	std::string str;
+	std::cout << "Input a word: ";
+	std::cin >> str;
 
+	bool match = false;
 
+	for (int startPos = 1; startPos <= str.length() / 2; ++startPos) {
+
+		if (str.length() % startPos != 0) continue;
+
+		std::string pattern = str.substr(0, startPos);
+		match = true;
+
+		for (int i = 0; i < str.length(); ++i) {
+			if (str[i] != pattern[i % startPos]) {
+				match = false;
+				break;
+			}
+		}
+		if (match) break;
+	}
+	if (match) std::cout << "Yes\n";
+	else std::cout << "No\n";
 };
+
+
+
+
+
+
