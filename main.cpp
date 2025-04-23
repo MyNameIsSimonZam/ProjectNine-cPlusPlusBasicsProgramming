@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 
 void task1();
 void task2();
